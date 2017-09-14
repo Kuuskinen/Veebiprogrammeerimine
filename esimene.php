@@ -39,7 +39,7 @@ Astronoomiaunioon  võtta Pluutolt planeedi staatuse ja kvalifitseeris Pluuto ü
 echo "<p>Algas PHP õppimine<p>";
 echo "<p>Täna on ";
 echo date("d.m.Y") .", kell oli lehe avamise hetkel " .date("H:i:s");
-echo ".</p>";
+echo ", hetkel on " .$partOfDay .".</p>";
 ?>
 
 </body>
