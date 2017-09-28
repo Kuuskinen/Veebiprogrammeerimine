@@ -2,6 +2,9 @@
     //muutujad
 	$myName= "Meelis";
 	$myFamilyName= "Lutsar";
+	$monthNamesEt = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober",
+	"november", "detsember"];
+	$monthNow = $monthNamesEt[date("n")-1]
 	
 	//hindan päeva osa | (võrdlemine  < >)
 	$hourNow = date("H");
