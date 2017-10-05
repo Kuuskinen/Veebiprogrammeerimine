@@ -1,14 +1,7 @@
 <?php
     require("../../../config.php");
 	require("functions.php");
-	echo $serverHost;
-
-    //kui on sisseloginud, siis pealehele
-    	if(isset($_GET["Logout"])){
-		session_destroy();
-		header("Location: login.php");
-		exit();
-	}
+	echo $serverHost; 
 	
 	$signupFirstName = "";
 	$signupFamilyName = "";
