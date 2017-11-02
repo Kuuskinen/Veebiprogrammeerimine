@@ -4,7 +4,7 @@
 	$myFamilyName= "Lutsar";
 	$monthNamesEt = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober",
 	"november", "detsember"];
-	$monthNow = $monthNamesEt[date("n")-1]
+	$monthNow = $monthNamesEt[date("n")-1];
 	
 	//hindan päeva osa | (võrdlemine  < >)
 	$hourNow = date("H");
@@ -63,11 +63,11 @@ Astronoomiaunioon  võtta Pluutolt planeedi staatuse ja kvalifitseeris Pluuto ü
 <?php
 echo "<p>Algas PHP õppimine<p>";
 echo "<p>Täna on ";
-echo date("d.m.Y") .", kell oli lehe avamise hetkel " .date("H:i:s");
+echo date("d.m.Y") .", kell oli lehe avamise hetkel " .date("H.i.s");
 echo ", hetkel on " .$partOfDay .".</p>";
 ?>
 <h2>Natuke vanusest</h2>
-<----Sissemagamise järgne kood---->
+<!---Sissemagamise järgne kood---->
 <form method="POST">
     <label>Teie sünniaasta: </label>
 	<input name="birthYear" id="birthYear" type="number" value="<?php echo $myBirthYear; ?> min="1900" max="2017">

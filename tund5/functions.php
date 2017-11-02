@@ -3,6 +3,26 @@ $database = "if17_lutsmeel";
 //alustame sessiooni
 session_start();
 
+//Kontrolltöö jaoks lisatud funktsioon 
+
+function MELU($MLnadalapaev){
+	$notice = "";
+	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]); //andmebaasi ühendus 
+	$stmt = $mysqli->prepare("SELECT  FROM vpnadalapaevad WHERE MLnadalapaev = ?");//mida baasist tahame
+	$stmt->bind_param("s" ,$MLnadalapaev);
+	$stmt->bind_result($id, $MLnadalapaevFromDb);
+	$stmt->execute();
+
+    if($stmt->fetch()){
+		if($MLnadalapaev == $MLnadalapaevFromDb){
+		    $notice = $MLnadalapaevFromDb;
+			
+	}
+	return $notice;
+}
+}
+//-------------------------------------------------------------------------------------------------------------------	
+
 //sisselogimise funktsioon
 function signIn($email, $password){
 	$notice = "";

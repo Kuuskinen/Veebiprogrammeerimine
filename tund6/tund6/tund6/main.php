@@ -1,5 +1,5 @@
 <?php
-    //et pääseks ligi sessioonile ja funktsioonidele
+	//et pääseks ligi sessioonile ja funktsioonidele
 	require("functions.php");
 	
 	//kui pole sisseloginud, liigume login lehele
@@ -13,10 +13,6 @@
 		header("Location: login.php");
 		exit();
 	}
-	//muutujad
-	$myName = "Meelis";
-	$myFamilyName = "Lutsar";
-	
 	$picDir = "../../pics/";
 	$picFiles = [];
 	$picFileTypes = ["jpg", "jpeg", "png", "gif"];
@@ -43,14 +39,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-		Koduleht
+		<?php echo $_SESSION["firstname"] ." " .$_SESSION["lastname"]; ?>
+		 veebiprogemise asjad
 	</title>
 </head>
 <body>
-	<h1><?php echo $_SESSION["firstname"] ." " .$_SESSION["lastname"]; ?></h1> <!--KODUS LISATUD-->
-	<p>Meelis Lutsari veebiprogrammeerimise veebileht.</p>
-	<p><a href="?logout=1">Logi välja!</a></p>
-	<p><a href="usersInfo.php">Kasutajate info</a></p>
+	<h1><?php echo $_SESSION["firstname"] ." " .$_SESSION["lastname"]; ?></h1>
+	<p>See veebileht on loodud õppetöö raames ning ei sisalda mingisugust tõsiseltvõetavat sisu!</p>
+	<p><a href="?logout=1">Logi välja</a></p>
+	<p><a href="usersinfo.php">Kasutajate info</a></p>
+	<p><a href="usersideas.php">Head mõtted</a></p>
 	<img src="<?php echo $picDir .$picFile; ?>" alt="Tallinna ülikool">
 </body>
 </html>

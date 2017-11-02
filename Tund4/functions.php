@@ -1,15 +1,15 @@
 <?php
 $database = "if17_lutsmeel";
 //alustame sessiooni
-session_start();
+session_start(); //sessiooni alustamine
 
 //sisselogimise funktsioon
 function signIn($email, $password){
 	$notice = "";
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]); //andmebaasi ühendus 
-	$stmt = $mysqli->prepare("SELECT id, email, password FROM vpusers WHERE email = ?");//mida baasist tahame
-	$stmt->bind_param("s" ,$email);
-	$stmt->bind_result($id, $emailFromDb, $passwordFromDb);
+	$stmt = $mysqli->prepare("SELECT id, firstname, lastname, email, password FROM vpusers WHERE email = ?");//mida baasist tahame
+	$stmt->bind_param("s", $email);
+	$stmt->bind_result($id, $firstnameFromDb, $lastnameFromDb, $emailFromDb, $passwordFromDb);
 	$stmt->execute();
 	
 	//kontrollin kasutajat
@@ -20,6 +20,8 @@ function signIn($email, $password){
 			
 			//salvestame sessioonimuutujaid
 			$_SESSION["userId"] = $id;
+			$_SESSION["firstname"] = $firstnameFromDb; //KODUS LISATUD!
+			$_SESSION["lastname"] = $lastnameFromDb; //KODUS LISATUD!
             $_SESSION["userEmail"] = $emailFromDb;			
 			
 			//liigume pealehele
