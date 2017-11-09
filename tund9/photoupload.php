@@ -23,6 +23,8 @@
 	$uploadOk = 1;
 	$maxWidth = 600;
 	$maxHeight = 400;
+	$marginHor = 10;
+	$marginVer = 10;
 
 
 	//kas vajutati laadimise nuppu
@@ -100,6 +102,21 @@
                 //Tekitan uue, sobiva suurusega pikslikogumi
                 $myImage = resizeImage($myTempImage, $imageWidth, $imageHeight, round($imageWidth / $sizeRatio), round($imageHeight / $sizeRatio)); 
 			
+			    //Lisan vesimärgi (õp. stamp = minu watermark!)
+				$watermark = imagecreatefrompng("../../graphics/hmv_logo.png");
+				$watermarkWidth = imagesx($watermark);
+				$watermarkHeight = imagesy($watermark);
+				$watermarkX = imagesx($myImage) - $watermarkWidth - $marginHor;
+				$watermarkY = imagesy($myImage) - $watermarkHeight - $marginVer;
+				imagecopy($myImage, $watermark, $watermarkX, $watermarkY, 0, 0, $watermarkWidth, $watermarkHeight);
+
+		        //lisan ka teksti vesimärgina
+                $textToImage = "Heade mõtete veeb";				
+			    //määrata värv
+				$textColor = imagecolorallocatealpha($myImage, 255, 255, 255, 60); //alpha on 0 kuni 127
+				// mis pildile, suurus, nurk (vastupäeva), koordinaadid x ja y, mis font 
+				imagettftext($myImage, 20, -45, 10, 25, $textColor, "../../graphics/ARIAL.TTF", $textToImage);
+				
                 //Salvestame pildi
 				if($imageFileType == "jpg" or $imageFileType =="jpeg"){
 					if(imagejpeg($myImage, $target_file, 90)){//$myImage <--- ainus parameeter, mis tuleb kindlasti anda
