@@ -139,6 +139,10 @@
 						$notice = "Üleslaadimisel tekkis viga";
 					}
 				}
+			//vabastan mälu
+            imagedestroy($myTempImage);
+            imagedestroy($myImage);
+            imagedestroy($watermark);			
 
 			} //saab salvestada lõppeb 
 	
